@@ -1,0 +1,61 @@
+#INSTALASI DJANGO
+
+-MEMBUAT ENV
+ python -m venv env
+
+-MENJALANKAN ENV
+ env\scripts\activate
+
+-INSTALL DJANGO
+ pip install django
+
+-UPGRADE pip
+ python -m pip install — upgrade pip
+
+-INSTALL REST FRAMEWORK
+ pip install djangorestframework
+ 
+ #DJANGO MODELS
+     def __str__(self) -> str:
+        return '{}.{}'.format(self.id, self.title)
+
+ #DAJNGO SHELL
+
+ -MENGAKTIFKAN SHELL
+ py manage.py SHELL
+
+ -MENGINPORT MODEL
+ from namaapp.models import namamodel
+
+ -MELIHAT SEMUA ISI DATABASE
+ namamodel.objects.all()
+
+ -MENAMBAH DATA
+ variabel = namamodel(namafield='isi data')
+ variabel.save()
+    -MELIHAT DATA
+    variabel
+
+-MENGUPDATE
+variabelbaru = namamodel.objects.get(id=1)
+variabel.namafield = 'data perubahan'
+
+-MENGHAPUS
+variabel.delete()
+
+-MEMFILTER DATA
+namamodel.objects.filter(field__startswith='dj') 
+
+-MEGURUTKAN DATA
+namamodel.objects.order_by ('-id')
+
+
+#DJ_ REST FRAMEWORK
+-MODELS
+        Membuat database
+-SERIALIZER
+    membuat class dengan methode crud
+-VIEWS
+    queri dari seriler dan model
+-URLS
+    alamat

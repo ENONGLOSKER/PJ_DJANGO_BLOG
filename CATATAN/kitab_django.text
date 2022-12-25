@@ -1,0 +1,312 @@
+-membuat projek =================================================
+django-admin startproject namaprojek
+
+-membuat app ====================================================
+python manage.py startapp namaapp
+
+-reegister di setting============================================
+installed_app =[
+'namaapp',
+]
+
+-dan register template===========================================
+'DIRS': ['templates'],
+
+-membuat folder templates di dalam projek========================
+    index.html
+-membuat file views.py di dalam folder project======================
+from django.shortcuts import render
+
+def index(request):
+    context = {
+        'header':'Home',
+        'judul':'SELAMAT DTANG'
+    }
+    return render (request,'index.html',context)
+
+-menyambungkan file html dg django===============================
+{%load static%}
+
+-membuat link di file urls=======================================
+from .import views
+
+urlpatterns = [
+    path('', views.index),
+    path('admin/', admin.site.urls),
+]
+
+-masuk ke app buat file urls.py =================================
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('',views.info),
+]
+
+setelah ini kembali ke membuat link di file urls dan buat file templates
+
+-menambahkan url pada projrk===================================
+    from django.contrib import admin
+    from django.urls import path,include <-
+    from .import views
+
+    urlpatterns = [
+        path('',views.index),
+     -> path('info/',include('info.urls',namespace='info')), 
+        path('admin/', admin.site.urls),
+    ]
+
+
+
+-membuat file forms.py ==================================================
+form django import forms  
+*from .forms import info
+
+class data(forms.FORM)
+    nama = forms.chahrfield()
+    alamat = forms.chahrfield()
+
+def index(request):
+  data = info()
+  context ={
+      'judul':'hello',
+      'form':data,
+  } 
+
+  buat file baru bernama form.py kemudian tinggal *panggil di file views dengan
+  from .forms import namaclass didalamnya
+
+
+-menampilkan form-----------------------------------------------
+    <form method='pos'>
+        {%csrf_token%}
+        {{data}}
+        <button type='submit'>kirim</button>
+    </from>
+  
+
+
+
+-mengaktifkan env================================================
+env\Scripts\activate
+
+-menjalankan server==============================================
+   python manage.py runserver 
+
+-VIEWS-----------------------------------------------------------
+    -membuat folder static, img dan taruh gambar
+    -membaut folder tempates, folder namaapp taruh file .html
+
+    -membuat urls.py
+    from django.urls import path
+    from . import views
+    urlspatterns = [
+        path ('',views.namaapp),
+    ]
+    -megisi views.py
+    from django.shortcuts import render
+
+    # Create your views here.
+    def namaapp(request):
+        context = {
+            'judul':'Info',
+            'icon':'/img/djangoproject.svg',
+            'user':'/img/elqusairi.png',
+        }
+        return render (request,'namafolder_Tempaltesapp/namafile.html',context)
+    -mendaftarkan di urls projek
+    path('namalink/', include('info.urls')),
+
+-MODEL-------------------------------------
+    -seting database
+    -install mysqlclient 
+    pip install mysqlclient
+    -setting database
+    'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'db_eldjango',
+            'HOST':'localhost',
+            'PORT':'3306',
+            'USER':::'root',
+            'PASSWORD':'',
+-buat nama database di phpmyadmin ===============================
+    db_eldjango
+    -migrasi
+    python manage.py migrate
+    -buat apps
+    python manage.py startapp tes
+    -daftar apps
+    setting 
+
+-membuat tabel====================================================
+    mode
+    class namatabel(models.model):
+        namafield = models.tipedata(max_lenghth =255)
+        namafield = models.tipedata(max_lenghth =255)
+    -singkron tabel dengan database 
+    python manage.py makemigrations
+    python manage.py migrate
+    -run server
+    python manage.py runserver
+
+-mengisi tabel====================================================
+    -buat superuser
+    python mnage.py createsuperuser
+    masukan username,email,pass
+    -run server dan login /admin
+    -register tabel
+    masuk ke admin pada app
+    from .models import nama class_padamodel
+    admin.site.register(namaclass)
+    reload brower
+
+    -mengubah title postingan di admin
+    masuk ke model
+    tambahkan fungsi di dalam class
+    # merubah nama pos objek
+        def __str__(self):
+            return "{}".format(self.title)
+
+-menampilkan isi tabel============================================
+    menu views
+    import models dari classnya
+    from . models import namaclass
+    buat variabel penampung
+    namavar = pos.objects.all() #ini akan memanggil semua
+    masukan ke context
+    'key':namavar,
+    panggil di file.html
+    {% for varabelbaru in namakey %}
+        {{variabelbaru.namafield1}}
+        {{variabelbaru.namafield2}} dst
+    {% endfor %}
+    -tipe data
+    objek 		: field pada database
+    not null	: blank =True
+    max_length	: length
+    chahrfield	: varchar
+    textfield	: text
+    emailfield	: email/varchar
+    datetimefield	: date
+    jika sudah menambah field baru pada model maka harus mensingkronggkan kembali dengan
+    cara makemigration kemudian migrate.
+-ORM--------------------------------------------------------------
+    -masuk ke py shell
+    python manage.py shell
+    -menyambungkan app
+    from namaapp.models import namaclass_pd_model
+    -crud
+    -create
+    post.objects.create(namafield="value")
+    -read
+    post.objects.all() #untuk semua data
+    post.objects.get(namafield="isi") #menampilkan data berdasarkan nama field untuk satu jenis data
+    post.objects.filter(namafield="isi") #menampilkan data berdasarkan field untuk semua jenis data
+    post.objects.exclude(namafield="isi") #berdasarkan selain dari namafield="isi"/kecuali
+    post.objects.get(namafield__iexact="isi")#tidak akan membedakan gaya penulisannya/bebas
+    post.objects.order_by(namafield="isi")#untuk mengurutkan data dari uppercase ke lowercase
+    post.objects.order_by(-namafield="isi")#untuk mengurutkan data dari lowercase ke uppercase
+
+    conversi dic ko list
+    variabelbaru = post.object.all()
+    variabelbaru .values("id") # berupa dictionary
+    variabelbaru .values_list("id") # berupa list
+
+    -update
+    variabelbaru = post.objects.all()[indextujuan]
+    variabelbaru.namafield ="isi yg baru"
+    variabelbaru.save()
+    -delete
+    post.objects.all()[idextujuan].delete()
+
+FORMS------------------------------------------------------------
+
+-REST API========================================================
+    -mendaftar app-----------------------------------------------
+    INSTALLED_APPS = [
+        'rest_framework',
+        'todolis',
+        'corsheaders',  
+        'drf_yasg',
+    ]
+    -membuat seting point akses front end------------------------
+    #membuat seting port akses frontend
+ ]
+    -membuat model di apps---------------------------------------
+    CORS_ALLOWED_ORIGINS = [
+     "http://localhost:3000",
+    ]
+
+    # Create your models here.
+    class Todo(models.Model):
+        nama = models.CharField(max_length=250)
+        deskripsi = models.TextField()
+        status = models.BooleanField( default=False)
+
+        def __str__(self) -> str:
+            return self.nama 
+
+    -membuat serialization---------------------------------------
+    from rest_framework import serializers
+    from .models import Todo
+    
+    class TodoSerializer (serializers.ModelSerializer):
+        class Meta:
+            model = Todo
+            fields = "__all__"
+    -mebuat urls projek-----------------------------------------
+    from todolis.views import  DetailTodoAPIView, TodoAPIView
+    from rest_framework import permissions
+    from drf_yasg.views import get_schema_view
+    from drf_yasg import openapi
+
+    schema_view = get_schema_view(
+    openapi.Info(
+        title="Snippets API",
+        default_version='v1',
+        description="Test description",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@snippets.local"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
+)
+
+
+
+    urlpatterns = [
+        path('',schema_view.with_ui('swagger',cache_timeout=0),name="schema-awagger-ui"),
+        path('admin/', admin.site.urls),
+        path('todo/<int:pk>',DetailTodoAPIView.as_view())
+    ]
+
+    -mebuat views 
+    from rest_framework  import generics
+        from .models import Todo
+        from .serializers import TodoSerializer
+
+        # Create your views here.
+        class TodoAPIView(generics.ListCreateAPIView):
+            serializer_class = TodoSerializer
+            queryset = Todo.objects.all()
+
+        class DetailTodoAPIView(generics.RetrieveUpdateDestroyAPIView):
+            serializer_class = TdoSerializer
+            queryset = Todo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

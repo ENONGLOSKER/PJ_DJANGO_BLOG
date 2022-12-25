@@ -1,0 +1,36 @@
+GIT & GIT HUB
+
+- configurasi
+ git configurasi --global user.name "nama akun"
+ git configurasi --global user.email "emailakun@gmail.com"
+
+-membuat repositori
+masuk ke dalam folder yang akan di jadikan repo kemudian
+git init ->menjadikan folder saat ini sebagai
+
+-mengahpus GIT di folder
+rm -rf .git
+
+-mengahpus kedensial GIT
+pengaturan kerdesial -> windo -> git remov
+
+ -workflow
+ 
+ working dic : save area lokal (megubah data)
+    -menambah data
+        git add "nama file.extensi" -> untuk satu file
+        git add . -> untuk semua
+
+ satge index : tanda siap dicomit
+    -melihat perubahan
+        git diff
+    -meneruskan ke repositori
+        git commite - m "keterangan yg diisi"
+
+ repositori  : save area server
+
+Upload ke github:
+buat remote 
+    git remote add origin https://github.com/enonglosker/django
+pos 
+    git push origin master

@@ -1,0 +1,20 @@
+RANGKUMAN BEASISWA AWS BACKEND-DEV
+---------------------------------------
+Merangkum definisi kerja AWS.
+Memaparkan perbedaan antara on-premise (lokal), hybrid, dan cloud sepenuhnya.
+Menjelaskan dasar-dasar infrastruktur global AWS Cloud.
+Menguraikan 6 (enam) manfaat AWS Cloud.
+Mendeskripsikan dan memberikan contoh layanan utama AWS, termasuk komputasi, jaringan, database, dan penyimpanan.
+Mengidentifikasi solusi yang sesuai menggunakan layanan AWS Cloud dengan berbagai kasus penggunaan.
+Menerangkan AWS Well-Architected Framework.
+Menguraikan dan menjelaskan shared responsibility model (model tanggung jawab bersama).
+Menggambarkan layanan keamanan utama dalam AWS Cloud.
+Menjelaskan dasar-dasar migrasi AWS Cloud.
+Menjelaskan manfaat finansial dari AWS Cloud untuk manajemen biaya organisasi/perusahaan.
+Menentukan penagihan utama, pengelolaan akun, dan model harga.
+Memaparkan cara penggunaan pricing tools (alat penetapan harga) yang dapat menghemat layanan AWS.
+
+
+
+
+

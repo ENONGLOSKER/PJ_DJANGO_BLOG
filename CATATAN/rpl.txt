@@ -1,0 +1,91 @@
+SDLC
+-pengertian
+SDLC (Software Development Life Cycle) adalah proses pembuatan dan pengubahan 
+sistem serta model dan metodologi yang digunakan untuk mengembangkan sistem 
+rekayasa perangkat lunak.
+
+-tahapan
+perencanaan
+analisis
+desain
+implementasi
+pengembangan
+perawatan
+
+-jenis
+#1.waterfall---------------------------------------------------------
+Requirement gathering and analysis:
+ langkah awal untuk menganalisis dan 
+ mendefinisiakan kebutuhan.
+desain:
+ langkah dalam perancangan desain perangkat lunak sebgai perkiraan sebleum di
+ develop
+implementasi:
+ langkah menerjemahkan desain ke dalam bentuk code program
+intergrasi dan testing:
+ penggabungan seluruh modul yang sudah dibuat dan melakukan uji coba
+verifikasi:
+ pengguna menilai apakah sudah sesuai atau tidak
+perawatan:
+ sistem yg sudah selesai dilakukan pemeliharan/perbaikan
+
+-kelebihan
+ proses terurut
+ sistem yang komplesitas rendah
+ proses tidak tumpang tindih
+-kekurangan
+ pengerjaan relatif lama
+ biaya lebih mahal
+ tidak cocok untuk sistem kompleksitas tinggi
+
+#2.prototype ---------------------------------------------------------
+memungkinkan pengguna atau user memiliki gambaran awal tentang perangkat lunak
+yang akan dikembangkan, serta pengguna dapat melakukan pengujian di awal 
+sebelum perangkat lunak dirilis
+
+analisis kebutuhan:
+ identifikasi perangkat lunak dan semua kebutuhan sistem yang akan dibuat.
+Membuat prototype:
+ embuat rancangan sementara yang berfokus pada alur program kepada pengguna.
+Evaluasi prototype:
+ untuk mengetahui apakah model prototype sudah sesuai dengan harapan.
+Mengkodekan sistem:
+ terjemahkan ke dalam bahasa pemrograman yang sesuai.
+Pengujian sistem:
+ Setelah perangkat lunak sudah siap, perangkat lunak harus melewati pengujian. 
+Evaluasi sistem:
+apakah perangkat lunak sudah sesuai dengan apa yang diharapkan atau tidak.
+Menggunakan sistem:
+ Perangkat lunak yang telah diuji dan disetujui siap untuk digunakan
+
+-kelebihan
+ waktu relatif singkat
+ lebih mudah dalam devlop
+-kekurangan
+ analisis terlalu singkat
+ kurang fleksibel jika terjadi perubahan
+
+#3. Agile ---------------------------------------------------------
+adalah metode yang fleksibel di mana pengembangan dilakukan dalam jangka 
+pendek
+
+plan
+desain
+develop
+testing
+devlop
+review
+launch
+
+-kelebihan 
+ fleksibel jika ada perubahan
+ devlop lebih cepat
+ adanya feedback
+
+-kekurangan
+ tdk cocok untuk tim besar
+
+
+#3. Fountain---------------------------------------------------------
+
+USE CASE

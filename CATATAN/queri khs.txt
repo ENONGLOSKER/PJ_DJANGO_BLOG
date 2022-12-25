@@ -1,0 +1,9 @@
+select tb_mahasiswa.nim,tb_mahsiswa.nama,tb_jurusan.jurusan,tb_matakuliah.matakuliah,tb_dosen.nama,tb_nilai.asben,
+tb_nilai.tugas,tb_nilai.uts,tb_tugas.uas,(0.1*tb_nilai.asben)+(0.2*tb_nilai.tugas)+(0.3*tb_nilai.uts)+(0.4*tb_nilai.uas) as total from
+(select * from tb_nilai where absen=60 or absen=40) as tb_nilai
+join tb_mahasiswa on (tb_mahasiswa.nim = tb_nilai.nim)
+join tb_matakuliah on (tb_matakuliah.kode_matakuliah = tb_nilai.kode_matakuliah)
+join tb_dosen on (tb_dosen.nidn = tb_matkuliah.nidn)
+join tb_jurusan on (tb_jurusan.kode_jurusan = tb_mahasiswa.kode_jurusan);
+
+ 

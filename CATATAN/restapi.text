@@ -1,0 +1,90 @@
+-REST API========================================================
+
+    -buat projek  : django-admin startproject namaprojek
+    -buat app     : py manage.py startapp namaapp
+    -buat admin   : py manage.py startapp createsuperuser
+    -daftar model : admin.py
+        from .models import nama class
+        admin.site.register(nama class)
+
+    -mendaftar app--------------------------------------------------------
+
+        INSTALLED_APPS = [
+            'rest_framework',
+            'todolis',
+            'corsheaders',  # ui restapi
+            'drf_yasg', # ui restapi
+        ]
+
+    -membuat seting point akses front end---------------------------------
+
+        CORS_ALLOWED_ORIGINS = [
+            "http://localhost:3000",
+        ]
+
+    -membuat model/database di apps---------------------------------------
+
+        # Create your models here.
+        class Todo(models.Model):
+
+            #nama field
+            nama = models.CharField(max_length=250)
+            deskripsi = models.TextField()
+            status = models.BooleanField( default=False)
+
+            def __str__(self) -> str:
+                return self.nama 
+
+    -membuat serialization-----------------------------------------------
+
+        from rest_framework import serializers
+        from .models import Todo
+        
+        class TodoSerializer (serializers.ModelSerializer):
+            class Meta:
+                model = Todo
+                fields = "__all__" #mengambil semua field dari model
+
+    -mebuat urls projek--------------------------------------------------
+
+            from todolis.views import  DetailTodoAPIView, TodoAPIView
+            from rest_framework import permissions
+            from drf_yasg.views import get_schema_view
+            from drf_yasg import openapi
+
+            #ui rest api
+            schema_view = get_schema_view(
+                    openapi.Info(
+                        title="Snippets API",
+                        default_version='v1',
+                        description="Test description",
+                        terms_of_service="https://www.google.com/policies/terms/",
+                        contact=openapi.Contact(email="contact@snippets.local"),
+                        license=openapi.License(name="BSD License"),
+                    ),
+                    public=True,
+                    permission_classes=[permissions.AllowAny],
+                )
+
+            urlpatterns = [
+                path('',schema_view.with_ui('swagger',cache_timeout=0),name="schema-awagger-ui"), #ui rest api
+                path('admin/', admin.site.urls),
+                path('todo/<int:pk>',DetailTodoAPIView.as_view())
+            ]
+
+    -mebuat views--------------------------------------------------------
+
+        from rest_framework  import generics
+        from .models import Todo
+         from .serializers import TodoSerializer
+
+            # Create your views here.
+            class TodoAPIView(generics.ListCreateAPIView):
+                serializer_class = TodoSerializer
+                queryset = Todo.objects.all()
+
+            class DetailTodoAPIView(generics.RetrieveUpdateDestroyAPIView):
+                serializer_class = TdoSerializer
+                queryset = Todo
+
+
